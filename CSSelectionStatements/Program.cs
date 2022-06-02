@@ -24,47 +24,43 @@ namespace CSSelectionStatements
 
         static void GuessANumber()
         {
-            bool bGiveup = false;
-            bool bGreatJob = false;
-            int iLowerLimit = 1;
-            int iUpperLimit = 3;
-            int numberGuesses = 0;
-            string prevguess = "";
-            var r = new Random();
-            var favNumber = r.Next(iLowerLimit, iUpperLimit);
+            bool   bGiveup       = false;
+            bool   bGreatJob     = false;
+            int    iLowerLimit   = 1;
+            int    iUpperLimit   = 10000;
+            int    numberGuesses = 0;
+            int    userInput     = 0;
+            string prevguess     = "";
+            string prevresp      = "";
+            string rank          = "";
+            var r                = new Random();
+            var favNumber        = r.Next(iLowerLimit, iUpperLimit);
             while (!bGiveup && !bGreatJob){
                 Console.Clear();
                 Console.WriteLine($"Guess a number between {iLowerLimit} and {iUpperLimit}. \nEnter 0 to give up");
                 if (numberGuesses > 0)
-                    Console.WriteLine($"\ntotal number of guesses: {numberGuesses} \nprevious guesses: {prevguess}\n");
+                    Console.WriteLine($"\ntotal number of guesses: {numberGuesses} \nprevious guesses: {prevguess}\n" +
+                        $"\nlast guess: {userInput}: {prevresp}");
                 Console.Write("user input: ");
-                var userInput = int.Parse(Console.ReadLine());
+                userInput = int.Parse(Console.ReadLine());
                 Console.Clear();
                 numberGuesses++;
                 prevguess += $"{userInput}, ";
-                if (userInput < favNumber)
-                {
-                    if (userInput == 0)
-                    {
+                if (userInput < favNumber) {
+                    if (userInput == 0) {
                         bGiveup = true;
                         Console.WriteLine("Better luck next time! \n press enter to exit... ");
-                        Console.ReadLine();
-                    }
-                    else
-                    {
-                        Console.WriteLine($"you guessed {userInput}: too low!\npress enter to guess again...");
-                        Console.ReadLine();
-                    }
-                }
-                else if (userInput > favNumber)
-                {
-                    Console.WriteLine($"you guessed {userInput}: too high!\npress enter to guess again...");
-                    Console.ReadLine();
-                }
-                else
-                {
+                        Console.ReadLine(); }
+                    else{
+                        prevresp = "too low";
+                        Console.WriteLine($"you guessed {userInput}: too low!\npress enter to guess again...\n");
+                        Console.ReadLine(); } }
+                else if (userInput > favNumber){
+                    prevresp = "too high";
+                    Console.WriteLine($"you guessed {userInput}: too high!\npress enter to guess again...\n");
+                    Console.ReadLine();}
+                else{
                     double guessrank = 1 / Convert.ToDouble(numberGuesses);
-                    string rank;
                     if (guessrank >= 0.50)
                         rank = "n awesome";
                     else if (guessrank >= 0.25)
@@ -75,8 +71,7 @@ namespace CSSelectionStatements
                     Console.WriteLine($"your rank is {Math.Round(guessrank, 4)}, you are a{rank} guesser!");
                     Console.WriteLine("\npress enter to exit");
                     Console.ReadLine();
-                    bGreatJob = true;
-                }
+                    bGreatJob = true; }
             }
         }
 
@@ -84,7 +79,7 @@ namespace CSSelectionStatements
         {
             //string response = "oh yeah thats nice";
             string response;
-            switch (subject)
+            switch (subject.ToLower())
             {
                 case "math":
                     response = "I was at a party the other night and I saw e^x sitting in the corner alone. " +
@@ -92,11 +87,14 @@ namespace CSSelectionStatements
                         "\nhe said because it wouldnt make a difference.";
                     break;
                 case "science":
+                case "biology":
+                case "physics":
                     response = "two scientists walk into a bar. The first asks for some H2O. " +
                         "\nThe second says he will have some H2O too" +
                         "\nthe second one dies.";
                     break;
                 case "lunch":
+                case "gym":
                     response = "scheduling a meeting with a guidance counselor now...";
                     break;
                 case "english":
@@ -118,7 +116,7 @@ namespace CSSelectionStatements
         {
             Console.WriteLine("what is your favorite school subject?");
             string userInput = Console.ReadLine();
-            Console.WriteLine(SubjectResponse(userInput));
+            Console.WriteLine($"\n{SubjectResponse(userInput)}");
             Console.WriteLine("\npress enter to continue...");
             Console.ReadLine();
         }

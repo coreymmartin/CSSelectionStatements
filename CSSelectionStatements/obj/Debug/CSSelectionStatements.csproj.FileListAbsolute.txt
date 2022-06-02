@@ -1,0 +1,6 @@
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\bin\Debug\CSSelectionStatements.exe
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\bin\Debug\CSSelectionStatements.pdb
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\obj\Debug\CSSelectionStatements.csproj.AssemblyReference.cache
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\obj\Debug\CSSelectionStatements.csproj.CoreCompileInputs.cache
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\obj\Debug\CSSelectionStatements.exe
+C:\Users\corey\Desktop\csharp27\CSSelectionStatements\CSSelectionStatements\obj\Debug\CSSelectionStatements.pdb

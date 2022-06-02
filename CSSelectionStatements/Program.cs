@@ -27,7 +27,7 @@ namespace CSSelectionStatements
             bool bGiveup = false;
             bool bGreatJob = false;
             int iLowerLimit = 1;
-            int iUpperLimit = 10;
+            int iUpperLimit = 3;
             int numberGuesses = 0;
             string prevguess = "";
             var r = new Random();
@@ -65,15 +65,14 @@ namespace CSSelectionStatements
                 {
                     double guessrank = 1 / Convert.ToDouble(numberGuesses);
                     string rank;
-                    if (guessrank > 50)
+                    if (guessrank >= 0.50)
                         rank = "n awesome";
-                    else if (guessrank > 25)
+                    else if (guessrank >= 0.25)
                         rank = " decent";
                     else
                         rank = " terrible";
                     Console.WriteLine($"you guessed the correct number {favNumber} in {numberGuesses} guesses! yay!");
-                    Console.WriteLine($"your rank is {guessrank}, you are a{rank} guesser!");
-
+                    Console.WriteLine($"your rank is {Math.Round(guessrank, 4)}, you are a{rank} guesser!");
                     Console.WriteLine("\npress enter to exit");
                     Console.ReadLine();
                     bGreatJob = true;
